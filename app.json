@@ -1,0 +1,58 @@
+{
+  "id": "24ed0a7b-9691-4a1a-8680-7f3c0ee66e67",
+  "name": "Q-Railing",
+  "publisher": "Mcd",
+  "version": "1.0.0.4",
+  "runtime": "12.0",
+  "target": "Cloud",
+  "application": "23.0.0.0",
+  "platform": "23.0.0.0",
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true,
+    "applyToDevExtension": false
+  },
+  "features": [
+    "NOIMPLICITWITH"
+  ],
+  "dependencies": [
+    {
+      "id": "3d5b2137-efeb-4014-8489-41d37f8fd4c3",
+      "name": "Late Payment Prediction",
+      "version": "23.5.16502.16887",
+      "publisher": "Microsoft"
+    },
+    {
+      "id": "d09fa965-9a2a-424d-b704-69f3b54ed0ce",
+      "name": "Payment Links to PayPal",
+      "version": "23.0.12034.12802",
+      "publisher": "Microsoft"
+    },
+    {
+      "id": "ec255f57-31d0-4ca2-b751-f2fa7c745abb",
+      "name": "Shopify Connector",
+      "version": "23.0.12034.13593",
+      "publisher": "Microsoft"
+    },
+    {
+      "id": "7c7d97ca-3598-40f5-b263-f713f49bd2a5",
+      "name": "Dynamics GP Historical Data",
+      "version": "23.0.12034.12802",
+      "publisher": "Microsoft"
+    },
+    {
+      "id": "7a129d06-5fd6-4fb6-b82b-0bf539c779d0",
+      "name": "_Exclude_Bank Deposits",
+      "version": "23.1.13431.14506",
+      "publisher": "Microsoft"
+    }
+  ],
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ]
+
+}
