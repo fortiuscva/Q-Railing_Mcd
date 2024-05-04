@@ -54,10 +54,34 @@ report 50100 McdPickInstruction
                 column(McdShippingNote; McdShippingNote)
                 {
                 }
+                column(ShipToAddress1; ShipToAddr[1])
+                {
+                }
+                column(ShipToAddress2; ShipToAddr[2])
+                {
+                }
+                column(ShipToAddress3; ShipToAddr[3])
+                {
+                }
+                column(ShipToAddress4; ShipToAddr[4])
+                {
+                }
+                column(ShipToAddress5; ShipToAddr[5])
+                {
+                }
+                column(ShipToAddress6; ShipToAddr[6])
+                {
+                }
+                column(ShipToAddress7; ShipToAddr[7])
+                {
+                }
+                column(ShipToAddress8; ShipToAddr[8])
+                {
+                }
                 dataitem("Sales Line"; "Sales Line")
                 {
                     DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
-                    DataItemTableView = sorting("Document Type", "Document No.", "Line No.") where(Type = filter(Item | "G/L Account" | " " | Resource));
+                    DataItemTableView = sorting("Document Type", "Document No.", "Line No.") where(Type = filter(Item | "G/L Account" | " " | Resource), "Purchasing Code" = filter(<> 'DROP'));
 
                     column(LineNo_SalesLine; "Line No.")
                     {
@@ -183,6 +207,12 @@ report 50100 McdPickInstruction
                         //<<Mcd
                     end;
                 }
+
+                trigger OnAfterGetRecord()
+                begin
+                    FormatAddr.SalesHeaderBillTo(CustAddr, "Sales Header");
+                    FormatAddr.SalesHeaderShipTo(ShipToAddr, CustAddr, "Sales Header");
+                end;
             }
             trigger OnPreDataItem()
             begin
@@ -247,6 +277,9 @@ report 50100 McdPickInstruction
         CompanyInfo3: Record "Company Information";
         TenantMedia: Record "Tenant Media";
         item: Record Item;
+        FormatAddr: Codeunit "Format Address";
+        ShipToAddr: array[8] of Text[100];
+        CustAddr: array[8] of Text[100];
 
     local procedure GetUOM(UOMCode: Code[10]): Text
     var
