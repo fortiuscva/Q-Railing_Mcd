@@ -75,6 +75,9 @@
         <Field Name="LineNo_SalesLine">
           <DataField>LineNo_SalesLine</DataField>
         </Field>
+        <Field Name="Type_SalesLine">
+          <DataField>Type_SalesLine</DataField>
+        </Field>
         <Field Name="ItemNo_SalesLine">
           <DataField>ItemNo_SalesLine</DataField>
         </Field>
@@ -3228,7 +3231,7 @@
                                                 <Color>LightGrey</Color>
                                                 <Style>None</Style>
                                               </Border>
-                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingLeft>15pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
@@ -7128,13 +7131,13 @@
                                     <TablixMembers>
                                       <TablixMember>
                                         <Visibility>
-                                          <Hidden>=iif(Fields!ItemNo_SalesLine.Value = "",true,false)</Hidden>
+                                          <Hidden>=iif(Fields!Type_SalesLine.Value = " ",true,false)</Hidden>
                                         </Visibility>
                                         <KeepWithGroup>After</KeepWithGroup>
                                       </TablixMember>
                                       <TablixMember>
                                         <Visibility>
-                                          <Hidden>=iif(Fields!ItemNo_SalesLine.Value = "",false,true)</Hidden>
+                                          <Hidden>=iif(Fields!Type_SalesLine.Value = " ",false,true)</Hidden>
                                         </Visibility>
                                         <KeepWithGroup>After</KeepWithGroup>
                                       </TablixMember>
