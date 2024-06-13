@@ -81,9 +81,12 @@ report 50100 McdPickInstruction
                 dataitem("Sales Line"; "Sales Line")
                 {
                     DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
-                    DataItemTableView = sorting("Document Type", "Document No.", "Line No.") where(Type = filter(Item | "G/L Account" | " " | Resource), "Purchasing Code" = filter(<> 'DROP'));
+                    DataItemTableView = sorting("Document Type", "Document No.", "Line No.") where(Type = filter(Item | " " | "G/L Account" | Resource), "Purchasing Code" = filter(<> 'DROP'));
 
                     column(LineNo_SalesLine; "Line No.")
+                    {
+                    }
+                    column(Type_SalesLine; Type)
                     {
                     }
                     column(ItemNo_SalesLine; "No.")
