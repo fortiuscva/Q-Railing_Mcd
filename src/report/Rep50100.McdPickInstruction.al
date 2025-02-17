@@ -190,6 +190,9 @@ report 50100 McdPickInstruction
                     var
                         AssembleToOrderLink: Record "Assemble-to-Order Link";
                     begin
+                        if (not DropShipItems) and ("Purchasing Code" = 'DROP') then
+                            CurrReport.Skip();
+
                         AssembleToOrderLink.Reset();
                         AssembleToOrderLink.SetCurrentKey(Type, "Document Type", "Document No.", "Document Line No.");
                         AssembleToOrderLink.SetRange(Type, AssembleToOrderLink.Type::Sale);
