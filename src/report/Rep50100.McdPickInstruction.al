@@ -252,6 +252,7 @@ report 50100 McdPickInstruction
                     }
                     field(DropShipItems; DropShipItems)
                     {
+                        ApplicationArea = All;
                         Caption = 'Drop Ship Items';
                         ToolTip = 'Include Drop Ship items in the report.';
                     }
