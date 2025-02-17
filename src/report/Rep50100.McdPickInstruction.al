@@ -81,7 +81,7 @@ report 50100 McdPickInstruction
                 dataitem("Sales Line"; "Sales Line")
                 {
                     DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
-                    DataItemTableView = sorting("Document Type", "Document No.", "Line No.") where(Type = filter(Item | " " | "G/L Account" | Resource), "Purchasing Code" = filter(<> 'DROP'));
+                    DataItemTableView = sorting("Document Type", "Document No.", "Line No.") where(Type = filter(Item | " " | "G/L Account" | Resource));
 
                     column(LineNo_SalesLine; "Line No.")
                     {
@@ -96,6 +96,9 @@ report 50100 McdPickInstruction
                     column(Description_SalesLine; "Description 2" + ' ' + Description)
                     {
                         //IncludeCaption = true;
+                    }
+                    column(DropShipmentVariable; Variable)
+                    {
                     }
                     column(VariantCode_SalesLine; "Variant Code")
                     {
@@ -208,6 +211,14 @@ report 50100 McdPickInstruction
                                     TenantMedia.CalcFields(Content);
                                 end;
                         //<<Mcd
+                        //Start>>
+                        if DropShipItems and ("Purchasing Code" = 'DROP') then begin
+                            "Description" := "Description";
+                            Variable := '-DROP SHIPMENT';
+                        end else
+                            Variable := '';
+                        //<<end
+
                     end;
                 }
 
@@ -238,6 +249,11 @@ report 50100 McdPickInstruction
                         ApplicationArea = Planning;
                         Caption = 'No of Copies';
                         ToolTip = 'Specifies how many copies of the document to print.';
+                    }
+                    field(DropShipItems; DropShipItems)
+                    {
+                        Caption = 'Drop Ship Items';
+                        ToolTip = 'Include Drop Ship items in the report.';
                     }
                 }
             }
@@ -271,6 +287,8 @@ report 50100 McdPickInstruction
     end;
 
     var
+        DropShipItems: Boolean;
+        Variable: Text;
         AsmHeader: Record "Assembly Header";
         NoOfCopies: Integer;
         DateTxt: Text;
