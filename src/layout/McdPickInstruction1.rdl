@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-02-13T13:31:55.4308948Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-03-06T22:36:02.3200793Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -35,7 +35,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>9.16034cm</Height>
+                  <Height>11.15159cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3454,7 +3454,6 @@
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -7101,6 +7100,120 @@
                                 </Border>
                               </Style>
                             </Tablix>
+                            <Rectangle Name="Rectangle2">
+                              <ReportItems>
+                                <Textbox Name="Textbox16">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>Received and inspected by:</Value>
+                                          <Style>
+                                            <FontFamily>Segoe UI</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                        <TextRun>
+                                          <Value xml:space="preserve"> </Value>
+                                          <Style />
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox16</rd:DefaultName>
+                                  <Top>0.67733cm</Top>
+                                  <Left>1.27cm</Left>
+                                  <Height>0.6cm</Height>
+                                  <Width>15.23871cm</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Line Name="Line1">
+                                  <Top>1.0795cm</Top>
+                                  <Left>5.2832cm</Left>
+                                  <Height>0cm</Height>
+                                  <Width>11.19376cm</Width>
+                                  <ZIndex>1</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>Solid</Style>
+                                      <Width>0.5pt</Width>
+                                    </Border>
+                                  </Style>
+                                </Line>
+                                <Textbox Name="Textbox21">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>Date:</Value>
+                                          <Style>
+                                            <FontFamily>Segoe UI</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                        <TextRun>
+                                          <Value xml:space="preserve"> </Value>
+                                          <Style />
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox16</rd:DefaultName>
+                                  <Top>0.67733cm</Top>
+                                  <Left>17.7091cm</Left>
+                                  <Height>0.6cm</Height>
+                                  <Width>4.66592cm</Width>
+                                  <ZIndex>2</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Line Name="Line2">
+                                  <Top>1.10067cm</Top>
+                                  <Left>18.6182cm</Left>
+                                  <Height>0cm</Height>
+                                  <Width>3.75682cm</Width>
+                                  <ZIndex>3</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>Solid</Style>
+                                      <Width>0.5pt</Width>
+                                    </Border>
+                                  </Style>
+                                </Line>
+                              </ReportItems>
+                              <KeepTogether>true</KeepTogether>
+                              <Top>9.45092cm</Top>
+                              <Left>0cm</Left>
+                              <Height>1.70067cm</Height>
+                              <Width>25.4246cm</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
@@ -7136,7 +7249,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Height>9.16034cm</Height>
+            <Height>11.15159cm</Height>
             <Width>25.4246cm</Width>
             <Style>
               <Border>
@@ -7146,7 +7259,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>9.16034cm</Height>
+        <Height>11.15159cm</Height>
         <Style />
       </Body>
       <Width>25.4246cm</Width>
