@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-03-06T22:36:02.3200793Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-03-10T00:40:33.9186244Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -2883,7 +2883,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!QuantityToShip_SalesLine.Value</Value>
+                                                    <Value>=Fields!QtyToShip.Value</Value>
                                                     <Style>
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
@@ -2905,6 +2905,7 @@
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -8132,6 +8133,12 @@ End Function
         </Field>
         <Field Name="QuantityToShip_SalesLineFormat">
           <DataField>QuantityToShip_SalesLineFormat</DataField>
+        </Field>
+        <Field Name="QtyToShip">
+          <DataField>QtyToShip</DataField>
+        </Field>
+        <Field Name="QtyToShipFormat">
+          <DataField>QtyToShipFormat</DataField>
         </Field>
         <Field Name="QuantityShipped_SalesLine">
           <DataField>QuantityShipped_SalesLine</DataField>
