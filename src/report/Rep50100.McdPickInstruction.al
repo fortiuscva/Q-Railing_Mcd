@@ -127,6 +127,8 @@ report 50100 McdPickInstruction
                     {
                         IncludeCaption = true;
                     }
+                    column(QtyToShip; QtyToShip)
+                    { }
                     column(QuantityShipped_SalesLine; "Quantity Shipped")
                     {
                         IncludeCaption = true;
@@ -192,6 +194,11 @@ report 50100 McdPickInstruction
                     begin
                         if (not DropShipItems) and ("Purchasing Code" = 'DROP') then
                             CurrReport.Skip();
+
+                        QtyToShip := "Sales Line"."Qty. to Ship";
+
+                        if ("Purchasing Code" = 'DROP') then
+                            QtyToShip := 0;
 
                         AssembleToOrderLink.Reset();
                         AssembleToOrderLink.SetCurrentKey(Type, "Document Type", "Document No.", "Document Line No.");
@@ -305,6 +312,7 @@ report 50100 McdPickInstruction
         FormatAddr: Codeunit "Format Address";
         ShipToAddr: array[8] of Text[100];
         CustAddr: array[8] of Text[100];
+        QtyToShip: Decimal;
 
     local procedure GetUOM(UOMCode: Code[10]): Text
     var
