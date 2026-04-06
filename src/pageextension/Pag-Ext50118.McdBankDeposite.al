@@ -4,11 +4,11 @@ pageextension 50118 McdBankDeposite extends "Bank Deposit"
     {
         addfirst(factboxes)
         {
-            part("Attached Documents"; "Document Attachment Factbox")
+            part("Attached Documents"; "Doc. Attachment List Factbox")
             {
                 ApplicationArea = All;
                 Caption = 'Attachments';
-                SubPageLink = "Table ID"=CONST(Database::"Bank Deposit Header"), "No."=field("No.");
+                SubPageLink = "Table ID" = CONST(Database::"Bank Deposit Header"), "No." = field("No.");
             }
         }
     }
