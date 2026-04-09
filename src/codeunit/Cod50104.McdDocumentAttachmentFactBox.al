@@ -6,37 +6,63 @@ codeunit 50104 McdDocumentAttachmentFactBox
         BankDepositHeader: Record "Bank Deposit Header";
         PostedBankDepositHeader: Record "Posted Bank Deposit Header";
     begin
-        case DocumentAttachment."Table ID" of database::"Bank Deposit Header": begin
-            RecRef.Open(DATABASE::"Bank Deposit Header");
-            if BankDepositHeader.Get(DocumentAttachment."No.")then RecRef.GetTable(BankDepositHeader);
-        end;
-        database::"Posted Bank Deposit Header": begin
-            RecRef.Open(DATABASE::"Posted Bank Deposit Header");
-            if PostedBankDepositHeader.Get(DocumentAttachment."No.")then RecRef.GetTable(PostedBankDepositHeader);
-        end;
+        case DocumentAttachment."Table ID" of
+            database::"Bank Deposit Header":
+                begin
+                    RecRef.Open(DATABASE::"Bank Deposit Header");
+                    if BankDepositHeader.Get(DocumentAttachment."No.") then RecRef.GetTable(BankDepositHeader);
+                end;
+            database::"Posted Bank Deposit Header":
+                begin
+                    RecRef.Open(DATABASE::"Posted Bank Deposit Header");
+                    if PostedBankDepositHeader.Get(DocumentAttachment."No.") then RecRef.GetTable(PostedBankDepositHeader);
+                end;
         end;
     end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Attachment Mgmt", OnAfterTableHasNumberFieldPrimaryKey, '', false, false)]
     local procedure OnAfterTableHasNumberFieldPrimaryKey(TableNo: Integer; var Result: Boolean; var FieldNo: Integer);
     begin
-        if TableNo in[Database::"Bank Deposit Header", Database::"Posted Bank Deposit Header"]then begin
-            FieldNo:=1;
-            Result:=true;
+        if TableNo in [Database::"Bank Deposit Header", Database::"Posted Bank Deposit Header"] then begin
+            FieldNo := 1;
+            Result := true;
         end;
     end;
-/*
-        [EventSubscriber(ObjectType::Page, Page::"Document Attachment Details", 'OnAfterOpenForRecRef', '', false, false)]
-        local procedure OnAfterOpenForRecRef(var DocumentAttachment: Record "Document Attachment"; var FlowFieldsEditable: Boolean; var RecRef: RecordRef)
-        var
-            FieldRef: FieldRef;
-            RecNo: Code[20];
-        begin
-            case RecRef.Number of
-                DATABASE::"Bank Deposit Header":
-                    begin
-                        FieldRef := RecRef.Field(1);
-                        RecNo := FieldRef.Value;
-                        DocumentAttachment.SetRange("No.", RecNo);
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Attachment Mgmt", 'OnAfterGetRefTable', '', false, false)]
+    local procedure OnAfterGetRefTable(var RecRef: RecordRef; DocumentAttachment: Record "Document Attachment")
+    var
+        BankDepositHeader: Record "Bank Deposit Header";
+        PostedBankDepositHeader: Record "Posted Bank Deposit Header";
+    begin
+        case DocumentAttachment."Table ID" of
+            Database::"Bank Deposit Header":
+                begin
+                    RecRef.Open(Database::"Bank Deposit Header");
+                    if BankDepositHeader.Get(DocumentAttachment."No.") then
+                        RecRef.GetTable(BankDepositHeader);
+                end;
+            Database::"Posted Bank Deposit Header":
+                begin
+                    RecRef.Open(Database::"Posted Bank Deposit Header");
+                    if PostedBankDepositHeader.Get(DocumentAttachment."No.") then
+                        RecRef.GetTable(PostedBankDepositHeader);
+                end;
+        end;
+    end;
+    /*
+            [EventSubscriber(ObjectType::Page, Page::"Document Attachment Details", 'OnAfterOpenForRecRef', '', false, false)]
+            local procedure OnAfterOpenForRecRef(var DocumentAttachment: Record "Document Attachment"; var FlowFieldsEditable: Boolean; var RecRef: RecordRef)
+            var
+                FieldRef: FieldRef;
+                RecNo: Code[20];
+            begin
+                case RecRef.Number of
+                    DATABASE::"Bank Deposit Header":
+                        begin
+                            FieldRef := RecRef.Field(1);
+                            RecNo := FieldRef.Value;
+                            DocumentAttachment.SetRange("No.", RecNo);
 
                         FlowFieldsEditable := false;
                     end;
