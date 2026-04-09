@@ -1,6 +1,7 @@
+
 codeunit 50104 McdDocumentAttachmentFactBox
 {
-    [EventSubscriber(ObjectType::Page, Page::"Document Attachment Factbox", OnBeforeDrillDown, '', false, false)]
+    /* [EventSubscriber(ObjectType::Page, Page::"Document Attachment Factbox", OnBeforeDrillDown, '', false, false)]
     local procedure OnBeforeDrillDown(DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef);
     var
         BankDepositHeader: Record "Bank Deposit Header";
@@ -18,7 +19,7 @@ codeunit 50104 McdDocumentAttachmentFactBox
                     if PostedBankDepositHeader.Get(DocumentAttachment."No.") then RecRef.GetTable(PostedBankDepositHeader);
                 end;
         end;
-    end;
+    end; */
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Attachment Mgmt", OnAfterTableHasNumberFieldPrimaryKey, '', false, false)]
     local procedure OnAfterTableHasNumberFieldPrimaryKey(TableNo: Integer; var Result: Boolean; var FieldNo: Integer);
@@ -64,25 +65,25 @@ codeunit 50104 McdDocumentAttachmentFactBox
                             RecNo := FieldRef.Value;
                             DocumentAttachment.SetRange("No.", RecNo);
 
-                        FlowFieldsEditable := false;
-                    end;
+                            FlowFieldsEditable := false;
+                        end;
+                end;
             end;
-        end;
 
-        [EventSubscriber(ObjectType::Table, Database::"Document Attachment", 'OnAfterInitFieldsFromRecRef', '', false, false)]
-        local procedure OnAfterInitFieldsFromRecRef(var DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
-        var
-            FieldRef: FieldRef;
-            RecNo: Code[20];
-        begin
-            case RecRef.Number of
-                DATABASE::"Bank Deposit Header":
-                    begin
-                        FieldRef := RecRef.Field(1);
-                        RecNo := FieldRef.Value;
-                        DocumentAttachment.Validate("No.", RecNo);
-                    end;
+            [EventSubscriber(ObjectType::Table, Database::"Document Attachment", 'OnAfterInitFieldsFromRecRef', '', false, false)]
+            local procedure OnAfterInitFieldsFromRecRef(var DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
+            var
+                FieldRef: FieldRef;
+                RecNo: Code[20];
+            begin
+                case RecRef.Number of
+                    DATABASE::"Bank Deposit Header":
+                        begin
+                            FieldRef := RecRef.Field(1);
+                            RecNo := FieldRef.Value;
+                            DocumentAttachment.Validate("No.", RecNo);
+                        end;
+                end;
             end;
-        end;
-        */
+            */
 }
