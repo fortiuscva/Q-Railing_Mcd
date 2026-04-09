@@ -28,6 +28,28 @@ codeunit 50104 McdDocumentAttachmentFactBox
             Result := true;
         end;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Attachment Mgmt", 'OnAfterGetRefTable', '', false, false)]
+    local procedure OnAfterGetRefTable(var RecRef: RecordRef; DocumentAttachment: Record "Document Attachment")
+    var
+        BankDepositHeader: Record "Bank Deposit Header";
+        PostedBankDepositHeader: Record "Posted Bank Deposit Header";
+    begin
+        case DocumentAttachment."Table ID" of
+            Database::"Bank Deposit Header":
+                begin
+                    RecRef.Open(Database::"Bank Deposit Header");
+                    if BankDepositHeader.Get(DocumentAttachment."No.") then
+                        RecRef.GetTable(BankDepositHeader);
+                end;
+            Database::"Posted Bank Deposit Header":
+                begin
+                    RecRef.Open(Database::"Posted Bank Deposit Header");
+                    if PostedBankDepositHeader.Get(DocumentAttachment."No.") then
+                        RecRef.GetTable(PostedBankDepositHeader);
+                end;
+        end;
+    end;
     /*
             [EventSubscriber(ObjectType::Page, Page::"Document Attachment Details", 'OnAfterOpenForRecRef', '', false, false)]
             local procedure OnAfterOpenForRecRef(var DocumentAttachment: Record "Document Attachment"; var FlowFieldsEditable: Boolean; var RecRef: RecordRef)
